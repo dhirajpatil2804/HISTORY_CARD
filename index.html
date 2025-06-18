@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disha Institute - History Card</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h2>Disha Computer Institute - Dehuroad</h2>
+    
+    <div id="student-section">
+      <h3>Student History Card</h3>
+      <input type="text" id="studentName" placeholder="Your Name" required />
+      <textarea id="historyCard" placeholder="What did you learn today?" required></textarea>
+      <button onclick="submitHistory()">Submit</button>
+      <p id="studentMsg"></p>
+    </div>
+
+    <hr/>
+
+    <div id="teacher-section">
+      <h3>Teacher Login</h3>
+      <input type="password" id="teacherPassword" placeholder="Enter Teacher Password" />
+      <button onclick="viewSubmissions()">View All Submissions</button>
+      <div id="teacherView" class="hidden">
+        <h3>All Student History Cards</h3>
+        <ul id="submissionList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
