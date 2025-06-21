@@ -1,21 +1,38 @@
 function submitHistory() {
   const name = document.getElementById('studentName').value.trim();
   const history = document.getElementById('historyCard').value.trim();
+  const msg = document.getElementById("studentMsg");
 
   if (!name || !history) {
     alert("Please fill in all fields.");
     return;
   }
 
-  const data = JSON.parse(localStorage.getItem("studentHistory") || "[]");
-  data.push({ name, history, date: new Date().toLocaleString() });
+  const data = { name, history };
 
-  localStorage.setItem("studentHistory", JSON.stringify(data));
-
-  document.getElementById("studentMsg").textContent = "History card submitted successfully!";
-  document.getElementById("studentName").value = "";
-  document.getElementById("historyCard").value = "";
+  fetch("YOUR_WEB_APP_URL", { // replace this
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(res => res.json())
+    .then(response => {
+      if (response.status === "success") {
+        msg.textContent = "History card submitted successfully!";
+        msg.style.color = "green";
+        document.getElementById("studentName").value = "";
+        document.getElementById("historyCard").value = "";
+      } else {
+        msg.textContent = "Submission failed!";
+        msg.style.color = "red";
+      }
+    })
+    .catch(() => {
+      msg.textContent = "Error connecting to server!";
+      msg.style.color = "red";
+    });
 }
+
 
 function viewSubmissions() {
   const password = document.getElementById("teacherPassword").value;
