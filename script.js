@@ -10,7 +10,7 @@ function submitHistory() {
 
   const data = { name, history };
 
-  fetch("YOUR_WEB_APP_URL", { // replace this
+  fetch("https://script.google.com/macros/s/AKfycbyIEnSKoc6pr-glGyiUebWGgiy3A_LxMp6ZUiqb6XLa4ubJQBAgUmopkNbzv_pGvQMc/exec", { // replace this
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }
